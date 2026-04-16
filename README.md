@@ -11,7 +11,6 @@ Entry for FIFA World Cup simulator challenge. The app loads 32 teams, randomly d
 - HTML
 - CSS
 - JavaScript ES modules
-- No backend, framework, or build step
 
 ## Architecture
 
