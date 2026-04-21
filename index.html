@@ -4,16 +4,17 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Simulador FIFA WorldCup 2026</title>
+        <link rel="icon" type="image/png" href="./src/images/favicon.png" />
         <link rel="stylesheet" href="./src/styles/style.css" />
     </head>
 
     <body>
-        <main class="app">
+        <main class="app-shell">
             <section class="intro">
-                <div>
-                     <a>
-                        <img class="logo" src="./images/logo.png" alt="Logo da Fifa worldcup">
-                    </a>
+                <div class="eyebrow">
+                     <div class="intro-title">
+                        <img class="logo" src="./src/images/logo.png" alt="Logo da Fifa Worldcup">
+                    </div>
                     <h1>Simulador FIFA WorldCup</h1>
                 </div>
 
@@ -31,7 +32,7 @@
             <nav class="phase-nav" id="phase-nav" aria-label="Tournament phases" hidden>
                 <button type="button" class="secondary-button" id="previous-phase">Anterior</button>
                 <div>
-                    <p class="size2">Fase</p>
+                    <p class="eyebrow">Fase</p>
                     <strong id="phase-label">Grupos</strong>
                 </div>
                 <button type="button" class="secondary-button" id="next-phase">Proximo</button>
@@ -40,7 +41,7 @@
 
             <section class="section-block phase-screen" id="groups-section" data-phase="groups" hidden>
                 <div class="section-heading">
-                    <p class="size2">Sorteio</p>
+                    <p class="eyebrow">Sorteio</p>
                     <h2>Grupos</h2>
                 </div>
                 <div class="groups-grid" id="groups"></div>
@@ -48,7 +49,7 @@
 
             <section class="section-block phase-screen" id="matches-section" data-phase="matches" hidden>
                 <div class="section-heading">
-                    <p class="size2">Fase de grupos</p>
+                    <p class="eyebrow">Fase de grupos</p>
                     <h2>Jogos e Resultados</h2>
                 </div>
                 <div class="matches-grid" id="group-matches"></div>
@@ -56,7 +57,7 @@
 
             <section class="section-block phase-screen" id="standings-section" data-phase="standings" hidden>
                 <div class="section-heading">
-                    <p class="size2">Qualificação</p>
+                    <p class="eyebrow">Qualificação</p>
                     <h2>Classificação</h2>
                 </div>
                 <div class="standings-grid" id="standings"></div>
@@ -64,7 +65,7 @@
 
             <section class="section-block phase-screen" id="round-of-16-section" data-phase="roundOf16" hidden>
                 <div class="section-heading">
-                    <p class="size2">Eliminatórias</p>
+                    <p class="eyebrow">Eliminatórias</p>
                     <h2>Oitavas de final</h2>
                 </div>
                 <div class="bracket-grid single-round" id="round-of-16"></div>
@@ -72,7 +73,7 @@
 
             <section class="section-block phase-screen" id="quarterfinals-section" data-phase="quarterfinals" hidden>
                 <div class="section-heading">
-                    <p class="size2">Eliminatórias</p>
+                    <p class="eyebrow">Eliminatórias</p>
                     <h2>Quartas de final</h2>
                 </div>
                 <div class="bracket-grid single-round" id="quarterfinals"></div>
@@ -80,7 +81,7 @@
 
             <section class="section-block phase-screen" id="semifinals-section" data-phase="semifinals" hidden>
                 <div class="section-heading">
-                    <p class="size2">Eliminatórias</p>
+                    <p class="eyebrow">Eliminatórias</p>
                     <h2>Semifinais</h2>
                 </div>
                 <div class="bracket-grid single-round" id="semifinals"></div>
@@ -88,7 +89,7 @@
 
             <section class="section-block phase-screen" id="final-section" data-phase="final" hidden>
                 <div class="section-heading">
-                    <p class="size2">Eliminatórias</p>
+                    <p class="eyebrow">Eliminatórias</p>
                     <h2>Final</h2>
                 </div>
                 <div class="bracket-grid single-round final-round" id="final-round"></div>
@@ -97,7 +98,7 @@
             <section class="section-block phase-screen champion-block" id="champion-section" data-phase="champion" hidden>
                 <div id="champion"></div>
             </section>
-            <footer>
+            <footer class="site-footer">
                 <a href="https://github.com/Icd-Kohi" target="_blank" rel="noreferrer">Icd-Kohi</a>
             </footer>
         </main>
