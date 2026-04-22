@@ -1,7 +1,3 @@
-# Step 1: API consumed - April 15th at 9:55pm
-
-`curl -X GET https://development-internship-api.geopostenergy.com/WorldCup/GetAllTeams -H "Accept: application/json" -H "git-user: Icd-Kohi"`.
-
 # World Cup Simulator
 
 Entry for FIFA World Cup simulator challenge. The app loads 32 teams, randomly draws groups, simulates the group stage and knockout bracket, resolves knockout draws by penalties, and submits the champion result in a JSON format.
@@ -10,7 +6,10 @@ Entry for FIFA World Cup simulator challenge. The app loads 32 teams, randomly d
 
 - HTML
 - CSS
-- JavaScript ES modules
+- JavaScript
+
+#### Step 1: API consumed - April 15th at 9:55pm
+`curl -X GET https://development-internship-api.geopostenergy.com/WorldCup/GetAllTeams -H "Accept: application/json" -H "git-user: Icd-Kohi"`.
 
 ## Architecture
 
@@ -29,6 +28,8 @@ src/
     utils.js
   data/
     teams.js
+  images/
+    logo.png
   ui/
     renderBracket.js
     renderChampion.js
@@ -36,6 +37,8 @@ src/
     renderMatches.js
     renderStandings.js
     state.js
+    html.js
+    teamName.js
   styles/
     style.css
 ```
@@ -76,3 +79,54 @@ The final result payload sends:
 - Champion and runner-up names as readable context
 - Final score
 - Penalty score = `0 - 0` when penalties were not needed
+
+## Data 
+#### Team 
+```js 
+{
+  id: "team-id",
+  name: "Brazil",
+  group: "A"
+}
+```
+#### Match 
+```js 
+{
+  homeTeam: {...},
+  visitingTeam: {...},
+  homeGoals: 2,
+  visitingGoals: 1,
+  stage: "group", // group, round16, quarter, semifinal, final
+  group: "A",
+  round: 1,
+  penalties: {
+    home: 0,
+    visiting: 0
+  },
+  winner: {...}
+}
+```
+#### Standing
+```js 
+{
+  team: {...},
+  points: 0,
+  goalsFor: 0,
+  goalsAgainst: 0,
+  goalDifference: 0
+}
+```
+#### Tournament global state
+```js 
+{
+  teams: [],
+  groups: {},
+  groupMatches: {},
+  standings: {},
+  round16: [],
+  quarterFinals: [],
+  semiFinals: [],
+  final: null,
+  champion: null
+}
+```
