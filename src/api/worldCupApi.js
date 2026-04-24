@@ -11,9 +11,9 @@ export function buildFinal(finalResult) {
     return {
         equipeA: finalResult.final.homeTeam.token,
         equipeB: finalResult.final.awayTeam.token,
-        placarEquipeA: finalResult.final.homeScore,
-        placarEquipeB: finalResult.final.awayScore,
-        penaltisEquipeA: penalties.homePenalties,
-        penaltisEquipeB: penalties.awayPenalties,
+        golsEquipeA: finalResult.final.homeScore,
+        golsEquipeB: finalResult.final.awayScore,
+        golsPenaltyTimeA: penalties.homePenalties,
+        golsPenaltyTimeB: penalties.awayPenalties,
     };
 }
