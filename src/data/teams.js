@@ -30,5 +30,5 @@ export const LOCAL_TEAMS = [
         {token:"dc7e4070-0a4a-4278-83a9-185931e4e971",nome:"Alemanha"},
         {token:"fb63d86d-2a9d-431b-a498-3e04e6f308f8",nome:"Arábia Saudita"},
         {token:"fd01c056-0cc9-4ff6-8c39-c40025b7ca23",nome:"Uzbequistão"},
-        {token:"a84b8b53-8168-4a12-b5b8-cc2fde42628d",nome:"Jordânia"}
+        {token:"a84b8b53-8168-4a12-b5b8-cc2fde42628d",nome:"Jordânia"},
 ];

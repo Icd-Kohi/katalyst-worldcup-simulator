@@ -33,7 +33,7 @@ export const dom = {
     groupMatches: getRequiredElement("#group-matches"),
     standings: getRequiredElement("#standings"),
     roundOf16: getRequiredElement("#round-of-16"),
-    quarterFinals: getRequiredElement("#quarterfinals"),
+    quarterfinals: getRequiredElement("#quarterfinals"),
     semifinals: getRequiredElement("#semifinals"),
     finalRound: getRequiredElement("#final-round"),
     champion: getRequiredElement("#champion"),
@@ -43,7 +43,7 @@ export const dom = {
 // Main button
 export function setLoading(isLoading){
     dom.simulateButton.disabled = isLoading;
-    dom.simulateButton.textContent = isLoading ? "Simulating ..." : "Reset / Simulate Again";
+    dom.simulateButton.textContent = isLoading ? "Simulando..." : "Simular novamente";
 }
 
 // Status bar before and after simulation.
@@ -62,7 +62,7 @@ export function showResultsSections(){
 }
 
 export function clearResults(){
-    [dom.summary, dom.groups, dom.groupMatches, dom.standings, dom.roundOf16, dom.quarterFinals, dom.semifinals, dom.finalRound, dom.champion, dom.phaseTabs,]
+    [dom.summary, dom.groups, dom.groupMatches, dom.standings, dom.roundOf16, dom.quarterfinals, dom.semifinals, dom.finalRound, dom.champion, dom.phaseTabs,]
     .forEach((element) => {
         if(element){
             element.innerHTML = "";

@@ -1,5 +1,5 @@
-import { escapeHtml } from "./html";
-import { renderTeamName } from "./teamName";
+import { escapeHtml } from "./html.js";
+import { renderTeamName } from "./teamName.js";
 //TODO unify exports
 function formatScore(match){
     return `${match.homeScore} - ${match.awayScore}`;
@@ -33,5 +33,5 @@ export function renderGroupMatches(container, simulatedFixtures){
                 </div>`,)
                         .join("")}
         </article>
-    `,).join("");
+    `).join("");
 }

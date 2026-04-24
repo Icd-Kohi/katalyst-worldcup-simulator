@@ -1,40 +1,39 @@
 import { escapeHtml } from "./html.js";
 
 const TEAM_FLAG_CODES = [
-    { nome: "Costa do Marfim", id: "CI" },
-    { nome: "Estados Unidos", id: "US" },
-    { nome: "Uruguai", id: "UY" },
-    { nome: "Irã", id: "IR" },
-    { nome: "França", id: "FR" },
-    { nome: "Jordânia", id: "JO" },
-    { nome: "Croácia", id: "HR" },
-    { nome: "Gana", id: "GH" },
-    { nome: "Panamá", id: "PA" },
-    { nome: "Dinamarca", id: "DK" },
-    { nome: "Argélia", id: "DZ" },
-    { nome: "Itália", id: "IT" },
+    { nome: "Hungria", id: "HU" },
+    { nome: "Venezuela", id: "VE" },
+    { nome: "Portugal", id: "PT" },
     { nome: "Argentina", id: "AR" },
-    { nome: "Camarões", id: "CM" },
-    { nome: "Nigéria", id: "NG" },
     { nome: "Holanda", id: "NL" },
-    { nome: "Iraque", id: "IQ" },
-    { nome: "Japão", id: "JP" },
-    { nome: "México", id: "MX" },
-    { nome: "Brasil", id: "BR" },
-    { nome: "Arábia Saudita", id: "SA" },
-    { nome: "Coreia do Sul", id: "KR" },
-    { nome: "Jamaica", id: "JM" },
-    { nome: "Costa Rica", id: "CR" },
+    { nome: "Irã", id: "IR" },
+    { nome: "Egito", id: "EG" },
+    { nome: "Estados Unidos", id: "US" },
+    { nome: "Dinamarca", id: "DK" },
+    { nome: "Uruguai", id: "UY" },
     { nome: "Sérvia", id: "RS" },
-    { nome: "Suíça", id: "CH" },
-    { nome: "Turquia", id: "TR" },
-    { nome: "Áustria", id: "AT" },
+    { nome: "Colômbia", id: "CO" },
+    { nome: "Gana", id: "GH" },
+    { nome: "Jamaica", id: "JM" },
+    { nome: "Costa do Marfim", id: "CI" },
+    { nome: "Iraque", id: "IQ" },
+    { nome: "Bélgica", id: "BE" },
     { nome: "Inglaterra", id: "GB" },
+    { nome: "Coreia do Sul", id: "KR" },
     { nome: "Senegal", id: "SN" },
+    { nome: "Indonésia", id: "ID" },
     { nome: "Espanha", id: "ES" },
-    { nome: "Equador", id: "EC" },
+    { nome: "Japão", id: "JP" },
+    { nome: "Austrália", id: "AU" },
+    { nome: "Costa Rica", id: "CR" },
+    { nome: "Nigéria", id: "NG" },
+    { nome: "Áustria", id: "AT" },
+    { nome: "Croácia", id: "HR" },
+    { nome: "Alemanha", id: "DE" },
+    { nome: "Arábia Saudita", id: "SA" },
+    { nome: "Uzbequistão", id: "UZ" },
+    { nome: "Jordânia", id: "JO" },
 ];
-
 function codeToFlagEmoji(code) {
     //ASCII "A"
     const A = 65;
@@ -49,7 +48,7 @@ function codeToFlagEmoji(code) {
 }
 
 export function getTeamFlag(team) {
-    const teamFlag = TEAM_FLAG_CODES.find((item) => item.nome === team.name);
+    const teamFlag = TEAM_FLAG_CODES.find((item) => item.nome === team.nome);
     return teamFlag ? codeToFlagEmoji(teamFlag.id) : "";
 }
 
@@ -59,7 +58,7 @@ export function renderTeamName(team) {
     return `
     <span class="team-name">
       ${flag ? `<span class="team-flag" aria-hidden="true">${flag}</span>` : ""}
-      <span class="team-text">${escapeHtml(team.name)}</span>
+      <span class="team-text">${escapeHtml(team.nome)}</span>
     </span>
   `;
 }
@@ -69,7 +68,7 @@ export function renderFinalTeamName(team){
 
     return `
         <span class="team-name">
-            <span class="team-text">${escapeHtml(team.name)}</span>
+            <span class="team-text">${escapeHtml(team.nome)}</span>
             ${flag ? `<span class="team-flag" aria-hidden="true">${flag}</span>` : ""}
         </span>
     `;

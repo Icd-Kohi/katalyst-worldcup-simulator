@@ -1,5 +1,5 @@
-import { escapeHtml } from "./html";
-import { renderTeamName } from "./teamName";
+import { escapeHtml } from "./html.js";
+import { renderTeamName } from "./teamName.js";
 
 // kept global score rendering for understanding purporses. In portuguese: GD = SG; GF = GP; GA = GC;
 export function renderStandings(container, groupStandings){
@@ -18,7 +18,7 @@ export function renderStandings(container, groupStandings){
                 </thead>
                 <tbody>
                     ${standings.map((standing, index) => `
-                        <tr class ="${index < 2 ? "qualificado" : ""}">
+                        <tr class ="${index < 2 ? "qualified" : ""}">
                             <td><span class="standing-rank">${index + 1}.</span> ${renderTeamName(standing.team)}</td>
                             <td>${standing.points}</td>
                             <td>${standing.goalDifference}</td>

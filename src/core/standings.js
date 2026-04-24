@@ -18,7 +18,7 @@ function applyMatch(standing, goalsFor, goalsAgainst){
     standing.played += 1;
     standing.goalsFor += goalsFor;
     standing.goalsAgainst += goalsAgainst;
-    standing.goalsDifference = standing.goalsFor - standing.goalsAgainst;
+    standing.goalDifference = standing.goalsFor - standing.goalsAgainst;
 
     if(goalsFor > goalsAgainst){
         standing.wins += 1;
@@ -44,9 +44,7 @@ export function rankStandings(standings){
 
 export function calculateGroupStandings(group, matches){
     // table of teams
-    const table = new Map(group.teams.map((teams) => [
-        teams.token, createStanding(teams)
-    ]));
+    const table = new Map(group.teams.map((team) => [team.token, createStanding(team)]));
 
     matches.forEach((match) => {
         applyMatch(table.get(match.homeTeam.token), match.homeScore, match.awayScore);   
@@ -57,9 +55,7 @@ export function calculateGroupStandings(group, matches){
 
 export function calculateAllStandings(groups, simulatedFixtures){
     return groups.map((group) => {
-        const fixtureGroup = simulatedFixtures.find((fixtures) => {
-            fixtures.group === group.name
-    }); 
+        const fixtureGroup = simulatedFixtures.find((fixtures) => fixtures.group === group.name);
         return {
             group: group.name,
             standings: calculateGroupStandings(group, fixtureGroup.matches),

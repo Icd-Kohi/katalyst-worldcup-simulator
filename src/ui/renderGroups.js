@@ -1,5 +1,5 @@
-import { escapeHtml } from "./html";
-import { renderTeamName } from "./teamName";
+import { escapeHtml } from "./html.js";
+import { renderTeamName } from "./teamName.js";
 export function renderGroups(container, groups){
     container.innerHTML = groups.map((group) => `
         <article class="card group-card">

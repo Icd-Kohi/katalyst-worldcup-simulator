@@ -1,4 +1,4 @@
-import { simulateKnockoutMatch } from "./simulator";
+import { simulateKnockoutMatch } from "./simulator.js";
 
 export const KNOCKOUT_ROUNDS = [
     { name: "Round of 16", matchCount: 8 },
@@ -6,7 +6,7 @@ export const KNOCKOUT_ROUNDS = [
     { name: "Semifinals", matchCount: 2 },
     { name: "Final", matchCount: 1 },
 ];
-export const PAIRINGS = [
+export const pairings = [
         ["A", "first", "B", "second"],
         ["C", "first", "D", "second"],
         ["E", "first", "F", "second"],
@@ -33,11 +33,11 @@ function buildNextRound(previousRound, stageName){
 }
 
 export function buildRoundOf16(qualifiedTeams){
-    return PAIRINGS.map(([homeGroup, homeRank, awayGroup, awayRank], index) => ({
+    return pairings.map(([homeGroup, homeRank, awayGroup, awayRank], index) => ({
         id: `R16-${index + 1}`,
         stage: "Round of 16",
         matchNumber: index + 1,
-        hometeam: qualifiedTeams[homeGroup][homeRank],
+        homeTeam: qualifiedTeams[homeGroup][homeRank],
         awayTeam: qualifiedTeams[awayGroup][awayRank]
     }));
 }

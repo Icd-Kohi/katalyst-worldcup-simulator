@@ -16,7 +16,7 @@ export function shuffle(items) {
 }
 
 export function getTeamName(team) {
-  return team?.nome ?? "Unknown team";
+  return team?.nome ?? "Time desconhecido";
 }
 
 export function getTeamToken(team) {

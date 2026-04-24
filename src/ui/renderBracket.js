@@ -12,11 +12,11 @@ function renderKnockoutMatch(match){
             <div class="team-line ${homeClass}">
                 ${renderTeamName(match.homeTeam)}
                 <strong>${match.homeScore}</strong>
-        </div>
-        <div class="team-line ${awayClass}">
-            ${renderTeamName(match.awayTeam)}
-            <strong>${match.awayScore}</strong>
-        </div>
+            </div>
+            <div class="team-line ${awayClass}">
+                ${renderTeamName(match.awayTeam)}
+                <strong>${match.awayScore}</strong>
+            </div>
             ${formatPenalties(match)}
         </div>
     `;
@@ -34,14 +34,14 @@ function renderTeams(team, score, isWinner){
 function pairGroups(matches){
     const chunks = [];
 
-    for(let i = 0; i < matches.length; index += 2){
+    for(let i = 0; i < matches.length; i += 2){
         chunks.push(matches.slice(i, i + 2));
     }
     return chunks;
 }
 
 // render rounds
-function roundClass(roundName){
+function getRoundClass(roundName){
     const classes = {
         "Round of 16": "round-of-16",
         Quarterfinals: "quarterfinals",
@@ -57,7 +57,7 @@ function renderMatch(match){
     const awayWon = match.winner.token === match.awayTeam.token;
 
     return `
-        <div class="matchup>
+        <div class="matchup">
             <div class="participants">
                 ${renderTeams(match.homeTeam, match.homeScore, homeWon)}
                 ${renderTeams(match.awayTeam, match.awayScore, awayWon)}
@@ -73,39 +73,43 @@ function renderWinners(matches, hasConnector){
             <div class="matchups">
                 ${matches.map(renderMatch).join("")}
             </div>
-            ${hasConnector ? `
+            ${
+              hasConnector 
+                    ? `
                 <div class="connector" aria-hidden="true">
                     <div class="merger"></div>
                     <div class="line"></div>
                 </div>
-                ` : ""
+            ` 
+                    : ""
             }
         </div>
     `;
 }
 
 export function renderBracket(container, knockout){
-    // iter and render over each knockout round and then over each knockout match.
+    // iter and render brackets over each knockout round and then over each knockout match.
     container.innerHTML = knockout.rounds.map((round) => `
         <article class="card bracket-round">
             <h3>${escapeHtml(round.name)}</h3>
             ${round.matches.map(renderKnockoutMatch).join("")}
         </article>
-    `,
-    ).join("");
+    `,).join("");
 }
 
 export function renderBracketRound(container, knockout, roundName){
-    const round = knockout.round.find((item) => item.name === roundName);
-    const pairGroups = pairGroups(round.matches);
-    const roundClass = roundClass(round.name);
+    const round = knockout.rounds.find((item) => item.name === roundName);
+    const groups = pairGroups(round.matches);
+    const roundClass = getRoundClass(round.name);
     const hasConnector = round.matches.length > 1;
 
     container.innerHTML = `
         <div class="bracket">
             <section class="round ${roundClass}">
-                ${pairGroups.map((matches) => renderWinners(matches,hasConnector)).join("")}
+                ${groups.map((matches) => renderWinners(matches,hasConnector)).join("")}
             </section> 
         </div>
     `;
 }
+
+

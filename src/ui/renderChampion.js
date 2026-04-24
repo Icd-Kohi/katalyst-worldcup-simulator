@@ -1,9 +1,9 @@
-import {buildFinalPayload} from "../api/worldCupApi.js";
+import {buildFinal} from "../api/worldCupApi.js";
 import {escapeHtml} from "./html.js";
 import {renderTeamName, renderFinalTeamName} from "./teamName.js";
 
 export function renderChampion(container, knockout){
-    const payload = buildFinalPayload(knockout);
+    const payload = buildFinal(knockout);
     const penalties = knockout.final.penalties ?? { homePenalties:0, awayPenalties:0 };
 
     container.innerHTML = `

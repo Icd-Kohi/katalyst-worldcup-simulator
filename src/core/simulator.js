@@ -8,9 +8,9 @@ export function simulateScore(){
 export function simulateGroupMatch(match){
     const awayScore = simulateScore();
     const homeScore = simulateScore();
-    let winnerTeam = null;
+    let winner = null;
     if (homeScore > awayScore){
-        winnerTeam = match.homeTeam;
+        winner = match.homeTeam;
     } else if(awayScore > homeScore){
         winner = match.awayTeam;
     }; 
@@ -18,7 +18,7 @@ export function simulateGroupMatch(match){
         ...match,
         homeScore,
         awayScore,
-        winner: winnerTeam,
+        winner: winner,
         isDraw:homeScore === awayScore,
         penalties: null,
     }
@@ -66,7 +66,7 @@ export function simulateKnockoutMatch(match){
     }
     // loser
     if(winnerTeam.token === match.homeTeam.token){
-       loserTeam = match.awayTeam; 
+        loserTeam = match.awayTeam; 
     } else {
         loserTeam = match.homeTeam;
     }
