@@ -1,0 +1,601 @@
+@import "./bracket.css";
+@import "./bracket-responsive.css";
+
+:root {
+    color-scheme: dark;
+    --bg: #111315;
+    --surface: #1a1d21;
+    --surface-muted: #22262b;
+    --text: #eef2f6;
+    --muted: #a3adb8;
+    --line: #353b43;
+    --accent: #3ddc97;
+    --accent-hover: #2fc383;
+    --accent-soft: rgba(61, 220, 151, 0.14);
+    --accent-contrast: #08120d;
+    --danger: #ff6b6b;
+    --success: #44d07a;
+    --success-soft: rgba(68, 208, 122, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+button {
+    font: inherit;
+}
+
+button {
+    min-height: 38px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.55rem 0.85rem;
+}
+
+
+.secondary-button {
+    border-color: var(--line);
+    background: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.phase-tab {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--text);
+}
+/* phase */
+.secondary-button:hover:not(:disabled),
+.phase-tab:hover:not(:disabled),
+.phase-tab.active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+
+.app-shell {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.25rem;
+    align-items: end;
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0 1.25rem;
+}
+
+.intro-copy {
+    justify-content: center;
+    align-items:center;
+    min-width: 0;
+}
+.intro-title {
+    gap: 0.8rem;
+    align-items: center;
+    margin-bottom: 0.45rem;
+}
+
+.intro-logo {
+    justify-content: center;
+    align-items:center;
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+.intro .eyebrow{
+    justify-content: center;
+    align-items:center;
+}
+.eyebrow {
+    margin: 0 0 0.25rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.intro-title,
+.intro-logo,
+.lede,
+.eyebrow{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 2rem;
+    line-height: 1.15;
+}
+
+h2 {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+}
+
+h3 {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    margin-bottom: 0.65rem;
+    font-size: 1rem;
+}
+
+h4 {
+    margin-bottom: 0.35rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.lede {
+    max-width: 680px;
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+.control-panel {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hint {
+    margin: 0.65rem 0 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.status-bar {
+    margin: 1rem 0;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+    background: var(--surface-muted);
+    padding: 0.75rem 0.85rem;
+}
+
+.status-bar[data-tone="success"] {
+    border-left-color: var(--success);
+}
+
+.status-bar[data-tone="error"] {
+    border-left-color: var(--danger);
+    color: var(--danger);
+}
+
+.phase-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+    "previous label next"
+    "tabs tabs tabs";
+    gap: 0.75rem;
+    align-items: center;
+    margin: 1rem 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    padding: 0.8rem;
+}
+
+.phase-nav .secondary-button {
+    min-width: 104px;
+}
+
+#previous-phase {
+    grid-area: previous;
+    justify-self: start;
+}
+
+#next-phase {
+    grid-area: next;
+    justify-self: end;
+}
+
+.phase-nav > div:not(.phase-tabs) {
+    grid-area: label;
+    justify-self: center;
+    text-align: center;
+}
+
+.phase-nav strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.phase-tabs {
+    grid-area: tabs;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.phase-tab {
+    min-height: 34px;
+    padding: 0.45rem 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.summary-grid,
+.groups-grid,
+.matches-grid,
+.standings-grid,
+.bracket-grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 1rem;
+}
+
+.metric,
+.card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    padding: 0.8rem;
+}
+
+.metric {
+    background: var(--surface-muted);
+}
+
+.metric strong {
+    display: block;
+    font-size: 1.45rem;
+}
+
+.metric span {
+    color: var(--muted);
+}
+
+.section-block {
+    margin-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+}
+
+.phase-screen[data-active="true"] {
+    animation: phase-in 260ms ease-out both;
+}
+
+.section-heading {
+    margin-bottom: 0.8rem;
+}
+
+.groups-grid,
+.standings-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.matches-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.group-card ol {
+    align-items:center;
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.round-block + .round-block {
+    margin-top: 0.8rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+}
+
+.match-row,
+.team-line {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.5rem;
+    align-items: center;
+    min-height: 30px;
+}
+
+.match-row > .team-name:last-child {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.match-row strong {
+    min-width: 44px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th,
+td {
+    padding: 0.38rem 0.3rem;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+}
+
+th:first-child,
+td:first-child {
+    text-align: left;
+}
+
+tr.qualified td:first-child {
+    color: var(--success);
+    font-weight: 700;
+}
+
+.knockout-match {
+    border-top: 1px solid var(--line);
+    padding: 0.55rem 0;
+}
+
+.knockout-match:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.team-line {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+}
+
+.team-line .team-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.team-line.winner {
+    color: var(--success);
+    font-weight: 700;
+}
+
+.penalties {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.matchup .penalties {
+    padding: 0 0.65rem 0.5rem;
+}
+
+.champion-block {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface-muted);
+    padding: 1rem;
+}
+
+.champion-content p {
+    padding:10px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.champion-content span{
+    padding: 5px;
+}
+
+.champion-content h2 {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 1.7rem;
+    animation: champion-pop 500ms ease-out both;
+}
+
+.team-name {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+    min-width: 0;
+    vertical-align: middle;
+}
+
+.team-flag {
+    flex: 0 0 auto;
+    font-size: 1.05em;
+    line-height: 1;
+}
+
+.team-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.standing-rank {
+    color: var(--muted);
+}
+
+details {
+    max-width: 760px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+pre {
+    overflow: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    padding: 0.8rem;
+}
+
+.site-footer {
+    margin-top: 2rem;
+    border-top: 1px solid var(--line);
+    padding: 1rem 0 0.25rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.site-footer a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.phase-screen[data-active="true"] .card,
+.phase-screen[data-active="true"] .bracket,
+.phase-screen[data-active="true"] .champion-content,
+.summary-grid:not([hidden]) .metric {
+    animation: card-in 320ms ease-out both;
+}
+
+.phase-screen[data-active="true"] .card:nth-child(2),
+.summary-grid:not([hidden]) .metric:nth-child(2) {
+    animation-delay: 50ms;
+}
+
+.phase-screen[data-active="true"] .card:nth-child(3),
+.summary-grid:not([hidden]) .metric:nth-child(3) {
+    animation-delay: 100ms;
+}
+
+.phase-screen[data-active="true"] .card:nth-child(4),
+.summary-grid:not([hidden]) .metric:nth-child(4) {
+    animation-delay: 150ms;
+}
+
+@keyframes phase-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes champion-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    70% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 1100px) {
+    .intro,
+    .matches-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .intro {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .summary-grid,
+    .groups-grid,
+    .standings-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .app-shell {
+        padding: 0.8rem;
+    }
+
+    .intro,
+    .summary-grid,
+    .groups-grid,
+    .matches-grid,
+    .standings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-title {
+        align-items: flex-start;
+    }
+
+    .phase-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+        "label label"
+        "previous next"
+        "tabs tabs";
+    }
+
+    .phase-nav .secondary-button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .phase-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    h1 {
+        font-size: 1.65rem;
+    }
+}

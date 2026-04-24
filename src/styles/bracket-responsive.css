@@ -1,0 +1,38 @@
+@media (max-width: 1100px) {
+  .bracket-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .single-round {
+    grid-template-columns: 1fr;
+  }
+
+  .round-of-16 {
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .bracket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bracket {
+    padding: 0.8rem;
+  }
+
+  .round,
+  .round-of-16,
+  .quarterfinals,
+  .semifinals,
+  .finals {
+    display: grid;
+    gap: 0.8rem;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .connector {
+    display: none;
+  }
+}

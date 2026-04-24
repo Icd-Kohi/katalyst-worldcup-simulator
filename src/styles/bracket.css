@@ -1,0 +1,111 @@
+.bracket-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+}
+
+.single-round {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.bracket {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface-muted);
+    padding: 1rem;
+}
+
+.round {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    min-width: 0;
+}
+
+.round-of-16 {
+    min-width: 980px;
+}
+
+.quarterfinals {
+    min-width: 720px;
+}
+
+.semifinals,
+.finals {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.winners {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    min-width: 0;
+}
+
+.matchups {
+    display: grid;
+    flex: 1 1 auto;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
+.matchup {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.participants {
+    display: grid;
+}
+
+.participant {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    min-height: 38px;
+    padding: 0.5rem 0.65rem;
+}
+
+.participant + .participant {
+    border-top: 1px solid var(--line);
+}
+
+.participant .team-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.participant strong {
+    min-width: 28px;
+    text-align: right;
+}
+
+.participant.winner {
+    background: var(--success-soft);
+    color: var(--success);
+    font-weight: 700;
+}
+
+.connector {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    margin-left: 0.75rem;
+}
+
+.merger {
+    width: 18px;
+    height: 78px;
+    border: 1px solid var(--line);
+    border-left: 0;
+}
+
+.line {
+    width: 24px;
+    height: 1px;
+    background: var(--line);
+}
